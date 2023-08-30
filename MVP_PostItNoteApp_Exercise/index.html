@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ideation App</title>
+    <link rel="stylesheet" href="css/stylesheet.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <input
+        type="color"
+        class="headerelement"
+        id="colorselector"
+        value="#FFFF99"
+      />
+      <button type="button" class="headerelement" id="newpostit">new</button>
+      <button type="button" class="headerelement" id="load">load</button>
+      <button type="button" class="headerelement" id="save">save</button>
+      <input
+        type="text"
+        class="headerelement messagefield"
+        id="messagefield"
+        readonly
+      />
+    </header>
+    <!-- Main -->
+    <main id="main" class="main"></main>
+    <script type="module">
+      // ----- Model-View-Presenter pattern ----- //
+      import View from "./js/view.js";
+      import Model from "./js/model.js";
+      import Presenter from "./js/presenter.js";
+
+      window.onload = function () {
+        const model = new Model();
+        const presenter = new Presenter();
+        const view = new View(presenter);
+        presenter.initialize(model, view);
+      };
+      // ---------------------------------------- //
+    </script>
+  </body>
+</html>
